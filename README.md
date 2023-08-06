@@ -1,2 +1,3 @@
-# Automation_Java_Tests_Amazon
-Automation Java Tests - Amazon.com (E-Commers)
+# Automation Java Tests - H&M website (E-Comers) 
+
+url - https://www2.hm.com/en_us/index.html
