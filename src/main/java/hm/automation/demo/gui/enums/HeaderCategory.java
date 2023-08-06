@@ -2,15 +2,15 @@ package hm.automation.demo.gui.enums;
 
 public enum HeaderCategory {
 
-    ENGLISH("Women"),
-    SPANISH("Men"),
-    ARABIC("Divided"),
-    GERMAN("Baby"),
-    HEBREW("Kids"),
-    KOREAN("H&M HOME"),
-    PORTUGUESE("Beauty"),
-    CHINESE("Sport"),
-    CHINESE_TAIWAN("Sale"),
+    WOMEN("Women"),
+    MEN("Men"),
+    DIVIDED("Divided"),
+    BABY("Baby"),
+    KIDS("Kids"),
+    HM_HOME("H&M HOME"),
+    BEAUTY("Beauty"),
+    SPORT("Sport"),
+    SALE("Sale"),
     SUSTAINABILITY("Sustainability");
 
     private final String headerCategory;
