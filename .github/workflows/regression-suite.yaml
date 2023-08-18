@@ -36,7 +36,7 @@ jobs:
       uses: Xotabu4/selenoid-github-action@v2
       with:
         selenoid-start-arguments: |
-          --browsers 'firefox'
+          --browsers 'chrome'
 
     - name: Run Regression Tests
-      run: mvn clean test -DsuiteXmlFile=HeaderMenuTest.xml
+      run: mvn clean test -Dsuite=HeaderMenuTest
