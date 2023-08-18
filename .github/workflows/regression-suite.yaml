@@ -6,16 +6,14 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Regression Suite (Cron)
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  schedule:
+    - cron: '* */12 * * *'
 
 jobs:
-  build:
+  test-schedule:
 
     runs-on: ubuntu-latest
 
@@ -27,9 +25,18 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
 
-    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-    - name: Update dependency graph
-      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+    - name: Check java version
+      run: java -version
+
+    - name: Check Maven version
+      run: mvn -version
+
+    - name: Start Selenoid Server
+      uses: Xotabu4/selenoid-github-action@v2
+      with:
+        selenoid-start-arguments: |
+          --browsers 'firefox'
+
+    - name: Run Regression Tests
+      run: mvn clean test -DsuiteXmlFile=HeaderMenuTest.xml
