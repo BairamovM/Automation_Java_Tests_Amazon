@@ -1,0 +1,62 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Debug Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      choice:
+        description: Type of test
+        type: choice
+        required: true
+        options:
+          - cucumber TAGS
+          - cucumber API
+          - cucumber UI
+        default: 'cucumber TAGS'
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Check java version
+        run: java -version
+
+      - name: Check Maven version
+        run: mvn -version
+
+      - name: Check Google Chrome version
+        run: google-chrome --version
+
+      - name: Check Firefox version
+        run: firefox --version
+
+      #    - name: Start Selenium Server
+      #      run: |
+      #       cd src/main/resources/selenium
+      #       ls
+      #       java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-4.8.1.jar standalone &
+
+      - name: Start Selenoid Server
+        uses: Xotabu4/selenoid-github-action@v2
+        with:
+          selenoid-start-arguments: |
+            --browsers 'firefox'
+
+      - name: Run Debug Tests
+        run: mvn clean test -DsuiteXmlFile=HeaderMenuTest.xml
