@@ -58,4 +58,4 @@ jobs:
             --browsers 'firefox'
 
       - name: Run Debug Tests
-        run: mvn clean test -DsuiteXmlFile=HeaderMenuTest.xml
+        run: mvn clean test -Dsuite=HeaderMenuTest
