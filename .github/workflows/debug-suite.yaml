@@ -12,9 +12,13 @@ on:
   workflow_dispatch:
     inputs:
       choice:
-        description: Type of test
+        description: Type of browser
         type: choice
         required: true
+        options:
+          - chrome
+          - firefox
+          default: 'chrome'
 
 jobs:
   run-tests:
