@@ -18,7 +18,7 @@ on:
         options:
           - chrome
           - firefox
-          default: 'chrome'
+        default: 'chrome'
 
 jobs:
   run-tests:
