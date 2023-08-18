@@ -15,11 +15,6 @@ on:
         description: Type of test
         type: choice
         required: true
-        options:
-          - cucumber TAGS
-          - cucumber API
-          - cucumber UI
-        default: 'cucumber TAGS'
 
 jobs:
   run-tests:
