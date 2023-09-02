@@ -1,6 +1,8 @@
 package hm.automation.demo;
 
+import hm.automation.demo.gui.components.FooterMenu;
 import hm.automation.demo.gui.components.HeaderMenu;
+import hm.automation.demo.gui.enums.FooterCategory;
 import hm.automation.demo.gui.pages.HomePage;
 
 import org.testng.Assert;
@@ -44,6 +46,16 @@ public class HeaderMenuTest implements IAbstractTest {
         headerMenu.hoverSportCategoryButton();
         headerMenu.hoverSaleCategoryButton();
         headerMenu.hoverSustainabilityCategoryButton();
+
+        pause(5);
+
+        FooterMenu footerMenu = homePage.getFooterMenu();
+
+        homePage.scrollDownToFooter();
+       // footerMenu.clickFooterButton(FooterCategory.WOMEN);
+        pause(5);
+
+        homePage.scrollUpToHeader();
 
         pause(5);
     }
