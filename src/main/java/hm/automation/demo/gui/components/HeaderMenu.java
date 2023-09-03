@@ -53,7 +53,7 @@ public class HeaderMenu extends AbstractUIObject {
     @FindBy(xpath = "//a[@id='nav-mini-cart']")
     private ExtendedWebElement shoppingBagButton;
 
-    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), '%S')]")
+    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), '%s')]")
     private ExtendedWebElement headerCategoryButton;
 
     @FindBy(xpath = "(//div[@class='mRTT']//input[@placeholder='Search products'])[1]")
@@ -84,6 +84,18 @@ public class HeaderMenu extends AbstractUIObject {
 
     public boolean isHeaderServiceButtonPresent() {
         return headerServiceButton.isElementPresent();
+    }
+
+    public boolean isNewsLetterButtonPresent() {
+        return newsLetterButton.isElementPresent();
+    }
+
+    public boolean isDownloadIOSButtonPresent() {
+        return downloadIOSButton.isElementPresent();
+    }
+
+    public boolean isDownloadAndroidButtonPresent() {
+        return downloadAndroidButton.isElementPresent();
     }
 
     public boolean isSingInButtonPresent() {
@@ -131,6 +143,18 @@ public class HeaderMenu extends AbstractUIObject {
         headerServiceButton.click();
     }
 
+    public void clickNewsLetterButton() {
+        newsLetterButton.click();
+    }
+
+    public void clickDownloadIOSButton() {
+        downloadIOSButton.click();
+    }
+
+    public void clickDownloadAndroidButton() {
+        downloadAndroidButton.click();
+    }
+
     public void clickSingInButton() {
         singInButton.click();
     }
@@ -143,9 +167,10 @@ public class HeaderMenu extends AbstractUIObject {
         shoppingBagButton.click();
     }
 
-    public void hoverHeaderCategoryButton(HeaderCategory headerCategory) {
+    public HeaderMenu hoverHeaderCategoryButton(HeaderCategory headerCategory) {
         pause(0.5);
         headerCategoryButton.format(headerCategory.getHeaderCategory()).hover();
+        return this;
     }
 
     public HM_AbstractPage clickHeaderCategoryButton(HeaderCategory headerCategory) {

@@ -16,16 +16,16 @@ public class HomePage extends HM_AbstractPage {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    @FindBy(xpath = "//header[@class='iFlL']")
+    @FindBy(xpath = "//header[@class='iFlL'] | //header[@class='Header-module--header__3qW7M reactHeader']")
     private HeaderMenu headerMenu;
 
-    @FindBy(xpath = "//header[@class='iFlL']")
+    @FindBy(xpath = "//header[@class='iFlL'] | //header[@class='Header-module--header__3qW7M reactHeader']")
     private ExtendedWebElement header;
 
-    @FindBy(xpath = "//footer[@class='OfEN']")
+    @FindBy(xpath = "//footer[@class='OfEN'] | //div[@class='layout']")
     private FooterMenu footerMenu;
 
-    @FindBy(xpath = "//footer[@class='OfEN']")
+    @FindBy(xpath = "//footer[@class='OfEN'] | //div[@class='layout']")
     private ExtendedWebElement footer;
 
     public HomePage(WebDriver driver) {

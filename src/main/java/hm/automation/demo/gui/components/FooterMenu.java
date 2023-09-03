@@ -2,7 +2,6 @@ package hm.automation.demo.gui.components;
 
 import java.lang.invoke.MethodHandles;
 
-import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
@@ -37,7 +36,8 @@ public class FooterMenu extends AbstractUIObject {
 
 
     // Footer category buttons
-    @FindBy(xpath = "//a[@class='CGae jm4b vEfo' and contains(text(), '%S')]")
+    @FindBy(xpath = "//a[@class='CGae jm4b vEfo' and contains(text(), '%s')] | " +
+            "//div[@class='four modules footer-menu footer-content']//a[contains(text(), '%s')]")
     private ExtendedWebElement footerCategoryButton;
 
     // Cookie Settings button
@@ -54,7 +54,8 @@ public class FooterMenu extends AbstractUIObject {
 
 
     // Social Networks links
-    @FindBy(xpath = "//a[@class='CGae mYRh __5DXf dYW2' and @title='%s']")
+    @FindBy(xpath = "//a[@class='CGae mYRh __5DXf dYW2' and @title='%s'] | " +
+            "//ul[@class='footer-social footer-content']//a[@title='%s']")
     private ExtendedWebElement socialNetworkButton;
 
 
@@ -88,17 +89,13 @@ public class FooterMenu extends AbstractUIObject {
     }
 
     public boolean isFooterCategoryButtonPresent(FooterCategory footerCategory) {
-        return footerCategoryButton.format(footerCategory.getFooterCategory()).isElementPresent();
+        return footerCategoryButton.format(footerCategory.getFooterCategory(), footerCategory.getFooterCategory()).isElementPresent();
     }
 
-    public void clickFooterButton(FooterCategory footerCategory) {
-        System.out.println("Checking: " + footerCategory.getFooterCategory());
-        String category = footerCategory.getFooterCategory();
-        System.out.println("Checking: " + category);
-
-        footerCategoryButton.format(footerCategory.getFooterCategory()).click();
-//        PageFactory pageFactory = new PageFactory();
-//        return pageFactory.createPage(footerCategory);
+    public HM_AbstractPage clickFooterButton(FooterCategory footerCategory) {
+        footerCategoryButton.format(footerCategory.getFooterCategory(), footerCategory.getFooterCategory()).click();
+        PageFactory pageFactory = new PageFactory();
+        return pageFactory.createPage(footerCategory);
     }
 
     public boolean isCookieSettingsButtonPresent() {
@@ -122,11 +119,11 @@ public class FooterMenu extends AbstractUIObject {
     }
 
     public boolean isSocialNetworkButtonPresent(SocialNetwork socialNetwork) {
-        return socialNetworkButton.format(socialNetwork.getSocialNetwork()).isElementPresent();
+        return socialNetworkButton.format(socialNetwork.getSocialNetwork(), socialNetwork.getSocialNetwork()).isElementPresent();
     }
 
     public HM_AbstractPage clickSocialNetworkButton(SocialNetwork socialNetwork) {
-        socialNetworkButton.format(socialNetwork.getSocialNetwork()).click();
+        socialNetworkButton.format(socialNetwork.getSocialNetwork(), socialNetwork.getSocialNetwork()).click();
         PageFactory pageFactory = new PageFactory();
         return pageFactory.createPage(socialNetwork);
     }
