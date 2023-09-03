@@ -94,6 +94,7 @@ public class FooterMenu extends AbstractUIObject {
 
     public HM_AbstractPage clickFooterButton(FooterCategory footerCategory) {
         footerCategoryButton.format(footerCategory.getFooterCategory(), footerCategory.getFooterCategory()).click();
+        LOGGER.info("Clicking Footer Category button: " + footerCategory);
         PageFactory pageFactory = new PageFactory();
         return pageFactory.createPage(footerCategory);
     }
@@ -124,6 +125,7 @@ public class FooterMenu extends AbstractUIObject {
 
     public HM_AbstractPage clickSocialNetworkButton(SocialNetwork socialNetwork) {
         socialNetworkButton.format(socialNetwork.getSocialNetwork(), socialNetwork.getSocialNetwork()).click();
+        LOGGER.info("Clicking Social Network button: " + socialNetwork);
         PageFactory pageFactory = new PageFactory();
         return pageFactory.createPage(socialNetwork);
     }
