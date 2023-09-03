@@ -2,6 +2,7 @@ package hm.automation.demo.gui.components;
 
 import java.lang.invoke.MethodHandles;
 
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
@@ -90,10 +91,14 @@ public class FooterMenu extends AbstractUIObject {
         return footerCategoryButton.format(footerCategory.getFooterCategory()).isElementPresent();
     }
 
-    public HM_AbstractPage clickFooterButton(FooterCategory footerCategory) {
+    public void clickFooterButton(FooterCategory footerCategory) {
+        System.out.println("Checking: " + footerCategory.getFooterCategory());
+        String category = footerCategory.getFooterCategory();
+        System.out.println("Checking: " + category);
+
         footerCategoryButton.format(footerCategory.getFooterCategory()).click();
-        PageFactory pageFactory = new PageFactory();
-        return pageFactory.createPage(footerCategory);
+//        PageFactory pageFactory = new PageFactory();
+//        return pageFactory.createPage(footerCategory);
     }
 
     public boolean isCookieSettingsButtonPresent() {

@@ -11,7 +11,10 @@ import org.slf4j.LoggerFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 
+import hm.automation.demo.gui.enums.HeaderCategory;
+import hm.automation.demo.gui.pages.HM_AbstractPage;
 import hm.automation.demo.gui.pages.HomePage;
+import hm.automation.demo.gui.patterns.PageFactory;
 
 public class HeaderMenu extends AbstractUIObject {
 
@@ -50,35 +53,8 @@ public class HeaderMenu extends AbstractUIObject {
     @FindBy(xpath = "//a[@id='nav-mini-cart']")
     private ExtendedWebElement shoppingBagButton;
 
-    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), 'Women')]")
-    private ExtendedWebElement womenCategoryButton;
-
-    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), 'Men')]")
-    private ExtendedWebElement menCategoryButton;
-
-    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), 'Divided')]")
-    private ExtendedWebElement dividedCategoryButton;
-
-    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), 'Baby')]")
-    private ExtendedWebElement babyCategoryButton;
-
-    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), 'Kids')]")
-    private ExtendedWebElement kidsCategoryButton;
-
-    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), 'H&M HOME')]")
-    private ExtendedWebElement hmHomeCategoryButton;
-
-    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), 'Beauty')]")
-    private ExtendedWebElement beautyCategoryButton;
-
-    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), 'Sport')]")
-    private ExtendedWebElement sportCategoryButton;
-
-    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), 'Sale')]")
-    private ExtendedWebElement saleCategoryButton;
-
-    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), 'Sustainability')]")
-    private ExtendedWebElement sustainabilityCategoryButton;
+    @FindBy(xpath = "//a[contains(@class, 'CGae __9y2v vEfo') and contains(text(), '%S')]")
+    private ExtendedWebElement headerCategoryButton;
 
     @FindBy(xpath = "(//div[@class='mRTT']//input[@placeholder='Search products'])[1]")
     private ExtendedWebElement searchTextField;
@@ -122,44 +98,8 @@ public class HeaderMenu extends AbstractUIObject {
         return shoppingBagButton.isElementPresent();
     }
 
-    public boolean isWomenCategoryButtonPresent() {
-        return womenCategoryButton.isElementPresent();
-    }
-
-    public boolean isMenCategoryButtonPresent() {
-        return menCategoryButton.isElementPresent();
-    }
-
-    public boolean isDividedCategoryButtonPresent() {
-        return dividedCategoryButton.isElementPresent();
-    }
-
-    public boolean isBabyCategoryButtonPresent() {
-        return babyCategoryButton.isElementPresent();
-    }
-
-    public boolean isKidsCategoryButtonPresent() {
-        return kidsCategoryButton.isElementPresent();
-    }
-
-    public boolean isHmHomeCategoryButtonPresent() {
-        return hmHomeCategoryButton.isElementPresent();
-    }
-
-    public boolean isBeautyCategoryButtonPresent() {
-        return beautyCategoryButton.isElementPresent();
-    }
-
-    public boolean isSportCategoryButtonPresent() {
-        return sportCategoryButton.isElementPresent();
-    }
-
-    public boolean isSaleCategoryButtonPresent() {
-        return saleCategoryButton.isElementPresent();
-    }
-
-    public boolean isSustainabilityCategoryButtonPresent() {
-        return sustainabilityCategoryButton.isElementPresent();
+    public boolean isHeaderCategoryButtonPresent(HeaderCategory headerCategory) {
+        return headerCategoryButton.format(headerCategory.getHeaderCategory()).isElementPresent();
     }
 
     public boolean isSearchTextFieldPresent() {
@@ -203,54 +143,15 @@ public class HeaderMenu extends AbstractUIObject {
         shoppingBagButton.click();
     }
 
-    public void hoverWomenCategoryButton() {
+    public void hoverHeaderCategoryButton(HeaderCategory headerCategory) {
         pause(0.5);
-        womenCategoryButton.hover();
+        headerCategoryButton.format(headerCategory.getHeaderCategory()).hover();
     }
 
-    public void hoverMenCategoryButton() {
-        pause(0.5);
-        menCategoryButton.hover();
-    }
-
-    public void hoverDividedCategoryButton() {
-        pause(0.5);
-        dividedCategoryButton.hover();
-    }
-
-    public void hoverBabyCategoryButton() {
-        pause(0.5);
-        babyCategoryButton.hover();
-    }
-
-    public void hoverKidsCategoryButton() {
-        pause(0.5);
-        kidsCategoryButton.hover();
-    }
-
-    public void hoverHmHomeCategoryButton() {
-        pause(0.5);
-        hmHomeCategoryButton.hover();
-    }
-
-    public void hoverBeautyCategoryButton() {
-        pause(0.5);
-        beautyCategoryButton.hover();
-    }
-
-    public void hoverSportCategoryButton() {
-        pause(0.5);
-        sportCategoryButton.hover();
-    }
-
-    public void hoverSaleCategoryButton() {
-        pause(0.5);
-        saleCategoryButton.hover();
-    }
-
-    public void hoverSustainabilityCategoryButton() {
-        pause(0.5);
-        sustainabilityCategoryButton.hover();
+    public HM_AbstractPage clickHeaderCategoryButton(HeaderCategory headerCategory) {
+        headerCategoryButton.format(headerCategory.getHeaderCategory()).click();
+        PageFactory pageFactory = new PageFactory();
+        return pageFactory.createPage(headerCategory);
     }
 
     public HeaderMenu typeSearchProduct(String product) {
