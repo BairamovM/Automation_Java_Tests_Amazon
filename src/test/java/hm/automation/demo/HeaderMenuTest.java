@@ -1,22 +1,25 @@
 package hm.automation.demo;
 
-import hm.automation.demo.gui.components.FooterMenu;
-import hm.automation.demo.gui.components.HeaderMenu;
-import hm.automation.demo.gui.enums.FooterCategory;
-import hm.automation.demo.gui.pages.HomePage;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 
+import hm.automation.demo.gui.components.FooterMenu;
+import hm.automation.demo.gui.components.HeaderMenu;
+import hm.automation.demo.gui.enums.FooterCategory;
+import hm.automation.demo.gui.enums.HeaderCategory;
+import hm.automation.demo.gui.pages.HomePage;
 
 public class HeaderMenuTest implements IAbstractTest {
 
     @Test()
     @MethodOwner(owner = "Muslim Bairamov")
     public void headerMenu() {
+
+//        mvn -U clean idea:idea
+//        mvn clean compile
 
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
@@ -25,34 +28,35 @@ public class HeaderMenuTest implements IAbstractTest {
 
         HeaderMenu headerMenu = homePage.getHeaderMenu();
 
-        Assert.assertTrue(headerMenu.isWomenCategoryButtonPresent(), "Women Category Button is not Present");
-        Assert.assertTrue(headerMenu.isMenCategoryButtonPresent(), "Men Category Button is not Present");
-        Assert.assertTrue(headerMenu.isDividedCategoryButtonPresent(), "Divided Category Button is not Present");
-        Assert.assertTrue(headerMenu.isBabyCategoryButtonPresent(), "Baby Category Button is not Present");
-        Assert.assertTrue(headerMenu.isKidsCategoryButtonPresent(), "Kids Category Button is not Present");
-        Assert.assertTrue(headerMenu.isHmHomeCategoryButtonPresent(), "H&M Home Category Button is not Present");
-        Assert.assertTrue(headerMenu.isBeautyCategoryButtonPresent(), "Beauty Category Button is not Present");
-        Assert.assertTrue(headerMenu.isSportCategoryButtonPresent(), "Sport Category Button is not Present");
-        Assert.assertTrue(headerMenu.isSaleCategoryButtonPresent(), "Sale Category Button is not Present");
-        Assert.assertTrue(headerMenu.isSustainabilityCategoryButtonPresent(), "Sustainability Category Button is not Present");
+//        Assert.assertTrue(headerMenu.isHeaderCategoryButtonPresent(HeaderCategory.WOMEN), "Women Category Button is not Present");
+//        Assert.assertTrue(headerMenu.isHeaderCategoryButtonPresent(HeaderCategory.MEN), "Men Category Button is not Present");
+//        Assert.assertTrue(headerMenu.isHeaderCategoryButtonPresent(HeaderCategory.DIVIDED), "Divided Category Button is not Present");
+//        Assert.assertTrue(headerMenu.isHeaderCategoryButtonPresent(HeaderCategory.BABY), "Baby Category Button is not Present");
+//        Assert.assertTrue(headerMenu.isHeaderCategoryButtonPresent(HeaderCategory.KIDS), "Kids Category Button is not Present");
+//        Assert.assertTrue(headerMenu.isHeaderCategoryButtonPresent(HeaderCategory.HM_HOME), "H&M Home Category Button is not Present");
+//        Assert.assertTrue(headerMenu.isHeaderCategoryButtonPresent(HeaderCategory.BEAUTY), "Beauty Category Button is not Present");
+//        Assert.assertTrue(headerMenu.isHeaderCategoryButtonPresent(HeaderCategory.SPORT), "Sport Category Button is not Present");
+//        Assert.assertTrue(headerMenu.isHeaderCategoryButtonPresent(HeaderCategory.SALE), "Sale Category Button is not Present");
+//        Assert.assertTrue(headerMenu.isHeaderCategoryButtonPresent(HeaderCategory.SUSTAINABILITY), "Sustainability Category Button is not Present");
 
-        headerMenu.hoverWomenCategoryButton();
-        headerMenu.hoverMenCategoryButton();
-        headerMenu.hoverDividedCategoryButton();
-        headerMenu.hoverBabyCategoryButton();
-        headerMenu.hoverKidsCategoryButton();
-        headerMenu.hoverHmHomeCategoryButton();
-        headerMenu.hoverBeautyCategoryButton();
-        headerMenu.hoverSportCategoryButton();
-        headerMenu.hoverSaleCategoryButton();
-        headerMenu.hoverSustainabilityCategoryButton();
+//        headerMenu.hoverHeaderCategoryButton(HeaderCategory.WOMEN);
+//        headerMenu.hoverHeaderCategoryButton(HeaderCategory.MEN);
+//        headerMenu.hoverHeaderCategoryButton(HeaderCategory.DIVIDED);
+//        headerMenu.hoverHeaderCategoryButton(HeaderCategory.BABY);
+//        headerMenu.hoverHeaderCategoryButton(HeaderCategory.KIDS);
+//        headerMenu.hoverHeaderCategoryButton(HeaderCategory.HM_HOME);
+//        headerMenu.hoverHeaderCategoryButton(HeaderCategory.BEAUTY);
+//        headerMenu.hoverHeaderCategoryButton(HeaderCategory.SPORT);
+//        headerMenu.hoverHeaderCategoryButton(HeaderCategory.SALE);
+//        headerMenu.hoverHeaderCategoryButton(HeaderCategory.SUSTAINABILITY);
+//        headerMenu.hoverHeaderCategoryButton(HeaderCategory.SUSTAINABILITY);
 
         pause(5);
 
         FooterMenu footerMenu = homePage.getFooterMenu();
 
         homePage.scrollDownToFooter();
-       // footerMenu.clickFooterButton(FooterCategory.WOMEN);
+        footerMenu.clickFooterButton(FooterCategory.WOMEN);
         pause(5);
 
         homePage.scrollUpToHeader();

@@ -32,3 +32,5 @@ reports/*
 /target/
 *new_custom_messages_*.properties
 /bin/
+/Automation_Java_Tests_HM.ipr
+/Automation_Java_Tests_HM.iws

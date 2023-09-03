@@ -10,10 +10,10 @@ import hm.automation.demo.gui.pages.HM_AbstractPage;
 import hm.automation.demo.gui.pages.HomePage;
 import hm.automation.demo.gui.pages.ShoppingBagPage;
 import hm.automation.demo.gui.pages.social_networks.FacebookPage;
-import hm.automation.demo.gui.pages.social_networks.TwitterPage;
 import hm.automation.demo.gui.pages.social_networks.InstagramPage;
-import hm.automation.demo.gui.pages.social_networks.YoutubePage;
 import hm.automation.demo.gui.pages.social_networks.PinterestPage;
+import hm.automation.demo.gui.pages.social_networks.TwitterPage;
+import hm.automation.demo.gui.pages.social_networks.YoutubePage;
 
 public class PageFactory implements IDriverPool {
 
@@ -40,7 +40,7 @@ public class PageFactory implements IDriverPool {
         return page;
     }
 
-    // FOOTER
+    // FOOTER MENU
     public HM_AbstractPage createPage(FooterCategory footerCategory) {
         HM_AbstractPage page = null;
         switch (footerCategory) {
@@ -82,12 +82,20 @@ public class PageFactory implements IDriverPool {
         return page;
     }
 
-    // HEADER
+    // HEADER MENU
     public HM_AbstractPage createPage(HeaderCategory headerCategory) {
         HM_AbstractPage page = null;
         switch (headerCategory) {
             case WOMEN: { page = new HomePage(getDriver()); break; } // TODO Page
             case MEN: { page = new HomePage(getDriver()); break; } // TODO Page
+            case DIVIDED: { page = new HomePage(getDriver()); break; } // TODO Page
+            case BABY: { page = new HomePage(getDriver()); break; } // TODO Page
+            case KIDS: { page = new HomePage(getDriver()); break; } // TODO Page
+            case HM_HOME: { page = new HomePage(getDriver()); break; } // TODO Page
+            case BEAUTY: { page = new HomePage(getDriver()); break; } // TODO Page
+            case SPORT: { page = new HomePage(getDriver()); break; } // TODO Page
+            case SALE: { page = new HomePage(getDriver()); break; } // TODO Page
+            case SUSTAINABILITY: { page = new HomePage(getDriver()); break; } // TODO Page
         }
         return page;
     }
