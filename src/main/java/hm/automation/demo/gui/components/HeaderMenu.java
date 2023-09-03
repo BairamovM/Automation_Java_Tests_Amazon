@@ -175,6 +175,7 @@ public class HeaderMenu extends AbstractUIObject {
 
     public HM_AbstractPage clickHeaderCategoryButton(HeaderCategory headerCategory) {
         headerCategoryButton.format(headerCategory.getHeaderCategory()).click();
+        LOGGER.info("Clicking Header Category button: " + headerCategory);
         PageFactory pageFactory = new PageFactory();
         return pageFactory.createPage(headerCategory);
     }

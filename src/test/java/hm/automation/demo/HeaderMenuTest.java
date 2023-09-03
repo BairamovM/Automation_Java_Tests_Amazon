@@ -18,11 +18,9 @@ public class HeaderMenuTest implements IAbstractTest {
     @Test()
     @MethodOwner(owner = "Muslim Bairamov")
     public void headerMenu() {
-
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
-
-        pause(5);
+        homePage.closeCookies();
 
         HeaderMenu headerMenu = homePage.getHeaderMenu();
 
@@ -66,7 +64,5 @@ public class HeaderMenuTest implements IAbstractTest {
         pause(5);
 
         homePage.scrollUpToHeader();
-
-        pause(5);
     }
 }
