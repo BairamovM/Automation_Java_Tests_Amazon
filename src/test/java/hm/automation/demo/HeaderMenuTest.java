@@ -20,7 +20,7 @@ public class HeaderMenuTest implements IAbstractTest {
     public void headerMenu() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
-        homePage.closeCookies();
+       // homePage.closeCookies();
 
         HeaderMenu headerMenu = homePage.getHeaderMenu();
 
